@@ -5,17 +5,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MONGO_URL = os.getenv("MONGO_URL")
-DATABASE_NAME = os.getenv("DATABASE_NAME")
+DATABASE_NAME = os.getenv("DATABASE_NAME", "crm_app")
 
 client = AsyncIOMotorClient(
     MONGO_URL,
-    tls=True,
-    tlsAllowInvalidCertificates=True
+    serverSelectionTimeoutMS=30000
 )
+
 db = client[DATABASE_NAME]
 
 operations_tasks_collection = db["operations_tasks"]
 marketing_tasks_collection = db["marketing_tasks"]
-
 completed_operations_tasks_collection = db["completed_operations_tasks"]
 completed_marketing_tasks_collection = db["completed_marketing_tasks"]
