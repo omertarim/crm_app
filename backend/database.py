@@ -7,7 +7,11 @@ load_dotenv()
 MONGO_URL = os.getenv("MONGO_URL")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
 
-client = AsyncIOMotorClient(MONGO_URL)
+client = AsyncIOMotorClient(
+    MONGO_URL,
+    tls=True,
+    tlsAllowInvalidCertificates=True
+)
 db = client[DATABASE_NAME]
 
 operations_tasks_collection = db["operations_tasks"]
