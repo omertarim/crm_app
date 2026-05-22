@@ -16,8 +16,7 @@ export default function CompletedOperationsPage() {
   const [search, setSearch] = useState("");
   const [dateFilter, setDateFilter] = useState("");
 
-  const API_URL = "http://127.0.0.1:8000";
-
+const API_URL = "https://crm-app-ggxh.onrender.com";
   const fetchTasks = async () => {
     const res = await axios.get(`${API_URL}/completed-operations-tasks`);
     setTasks(res.data);
