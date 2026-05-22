@@ -10,18 +10,17 @@ from database import (
 )
 
 app = FastAPI()
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://crm-app-ggxh.onrender.com",
+        "http://localhost:3001",
+        "https://crm-app-kappa-three.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class MarketingTaskCreate(BaseModel):
     title: str
